@@ -2,12 +2,20 @@
 #define STARTUP_H
 
 #include <QObject>
+#include <View/mainview.h>
+#include <View/setuptab.h>
 
-class Startup : public QObject
+class Startup final: public QObject
 {
     Q_OBJECT
 public:
-    explicit Startup(QObject *parent = nullptr);
+    explicit Startup();
+    void show() const;
+    ~Startup();
+
+private:
+    SetupTab &m_setuptab;
+    MainView &m_mainview;
 
 signals:
 

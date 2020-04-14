@@ -16,16 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Model/provider.cpp \
+    Model/settings.cpp \
+    View/setuptab.cpp \
     main.cpp \
-    mainview.cpp
+    View/mainview.cpp \
+    startup.cpp \
+    utils.cpp
 
 HEADERS += \
-    mainview.h
+    Model/provider.h \
+    Model/settings.h \
+    View/mainview.h \
+    View/setuptab.h \
+    startup.h \
+    utils.h
 
 FORMS += \
-    mainview.ui
+    View/mainview.ui \
+    View/setuptab.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    vfpResourcefile.qrc

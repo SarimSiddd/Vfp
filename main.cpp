@@ -1,11 +1,11 @@
-#include "mainview.h"
-
+#include "startup.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainView w;
-    w.show();
+    Startup startup;
+    //MainView w(new QWidget, &new SetupTab);
+    startup.show();
     return a.exec();
 }

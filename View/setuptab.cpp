@@ -1,14 +1,16 @@
 #include "setuptab.h"
 #include "ui_setuptab.h"
+#include "utils.h"
 
-setuptab::setuptab(QWidget *parent) :
+SetupTab::SetupTab(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::setuptab)
+    ui(new Ui::SetupTab)
 {
     ui->setupUi(this);
 }
 
-setuptab::~setuptab()
+SetupTab::~SetupTab()
 {
+    Utils::DestructorMsg(this);
     delete ui;
 }

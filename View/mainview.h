@@ -2,6 +2,7 @@
 #define MAINVIEW_H
 
 #include <QMainWindow>
+#include "View/setuptab.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainView; }
@@ -12,10 +13,12 @@ class MainView : public QMainWindow
     Q_OBJECT
 
 public:
-    MainView(QWidget *parent = nullptr);
+    MainView(QWidget *parent, SetupTab &setup);
     ~MainView();
 
 private:
-    Ui::MainView *ui;
+      Ui::MainView *ui;
+      SetupTab &m_setuptab;
+
 };
 #endif // MAINVIEW_H
