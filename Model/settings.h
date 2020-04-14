@@ -22,10 +22,21 @@ class Settings : public QObject
 public:
     explicit Settings(QObject *parent, QString filename);
     void ParseJsonData();
+    QString getHostName() const {return m_hostName;}
+    quint16 getPortNumber()  const {return m_portNumber;}
+    QString getApplicationName() const {return m_applicationName;}
+    QString getAppShortName() const {return m_appShortName;}
+    int getShortWaitMs() const { return m_shortWaitMs;}
+    int getLongWaitMs() const {return m_longWaitMs;}
+    QStringListModel& getCommandsAsModel() const {return m_modelCommands;}
+
+
 
 signals:
     void NotifyStatusMessage(QString);
 private:
+
+    QStringListModel& m_modelCommands;
     QString m_filename;
     QString m_applicationName;
     QString m_appShortName;
@@ -34,14 +45,6 @@ private:
     int m_longWaitMs;
     int m_shortWaitMs;
 
-    QStringListModel& m_modelCommands;
-    QString getApplicationName() const {return m_applicationName;}
-    QString getAppShortName() const {return m_appShortName;}
-    QString getHostName() const {return m_hostName;}
-    quint16 getPortNumber()  const {return m_portNumber;}
-    int getShortWaitMs() const { return m_shortWaitMs;}
-    int getLongWaitMs() const {return m_longWaitMs;}
-    QStringListModel& getCommandsAsModel() const {return m_modelCommands;}
     QString ReadJsonFile();
     QString ReadJsonFromInternalResource();
     JsonObjErrorPair GetJsonObject(const QString &json);
@@ -50,8 +53,6 @@ private:
     void SetupCommands(QJsonObject json_obj);
     void WriteDefaultsToStdConfigFile(QFile &stdConfigFile, const QString &settings);
     QDir OpenConfigDirectory();
-
-
 
 
 };

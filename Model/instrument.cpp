@@ -104,3 +104,4 @@ void Instrument::onReceiveRequest()
         emit NotifyDataReceived(input_buffer);
     }
 }
+

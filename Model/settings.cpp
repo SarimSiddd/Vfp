@@ -4,8 +4,9 @@ static auto RESOURCE_PREFIX = QStringLiteral(":/json");
 
 Settings::Settings(QObject *parent, QString filename) :
     QObject(parent),
-    m_filename(filename),
-    m_modelCommands(*new QStringListModel (this))
+    m_modelCommands(*new QStringListModel (this)),
+    m_filename(filename)
+
 {
     ReadJsonFile();
 }
@@ -98,6 +99,7 @@ void Settings::ParseJsonData(){
     m_portNumber = json_obj["port"].toInt();
     m_longWaitMs = json_obj["tcpLongWaitMs"].toInt();
     m_shortWaitMs = json_obj["tcpShortWaitMs"].toInt();
+    SetupCommands(json_obj);
 }
 
 
