@@ -69,6 +69,7 @@ void SetupViewMgr::WireButtons(){
             &m_instrument, &Instrument::Connect);
     connect(&m_instrument, &Instrument::NotifyConnected,
              &m_setuptab, &SetupTab::onConnected);
+    //Add ControlTab Connected signal
     connect(&m_instrument, &Instrument::NotifyConnected,
              this, &SetupViewMgr::onConnected);
 
@@ -76,6 +77,7 @@ void SetupViewMgr::WireButtons(){
             &m_instrument, &Instrument::Disconnect);
     connect(&m_instrument, &Instrument::NotifyDisconnected,
              &m_setuptab, &SetupTab::onDisconnected);
+    //Add ControlTab Disconnected signal
     connect(&m_instrument, &Instrument::NotifyDisconnected,
              this, &SetupViewMgr::onDisconnected);
 

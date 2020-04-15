@@ -1,5 +1,4 @@
 #pragma once
-#include "instrument.h"
 #include "Model/instsocket.h"
 #include "utils.h"
 #include <QDebug>
@@ -18,6 +17,15 @@ public:
     quint16 GetPort() const;
     void SetLongWaitMs(int value);
     void SetShortWaitMs(int value);
+    double getPulseWidth() const {return m_pulseWidth;}
+    double getPulseDelay() const {return m_pulseDelay;}
+    bool getSynth1() const {return m_synth1;}
+    bool getSynth2() const {return m_synth2;}
+    void setPulseWidth(double width);
+    void setPulseDelay(double delay);
+    void setSynth1(bool isEnabled);
+    void setSynth2(bool isEnabled);
+
 
 signals:
     void NotifyConnected();
@@ -26,6 +34,8 @@ signals:
     void NotifyDataReceived(const QString& readData);
     void NotifyErrorDetected(const QString& errorMsg);
     void NotifyStatusUpdated(const QString& statusMsg);
+    void NotifyDelayUpdated(const double& value);
+    void NotifyValueUpdated(const double& value);
 
 public slots:
     void onHostNameChanged(const QString& hostName);
@@ -39,6 +49,10 @@ public slots:
 private:
     InstSocket& m_instSocket;
     QString m_lastCommandSent;
+    double m_pulseDelay;
+    double m_pulseWidth;
+    bool m_synth1;
+    bool m_synth2;
 
     void WireConnections();
 

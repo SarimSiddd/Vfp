@@ -3,7 +3,11 @@
 Instrument::Instrument(QObject *parent, InstSocket& sock) :
     QObject(parent),
     m_instSocket (sock),
-    m_lastCommandSent("")
+    m_lastCommandSent(""),
+    m_pulseDelay(1000.001),
+    m_pulseWidth(10000.000),
+    m_synth1(false),
+    m_synth2(false)
 {
     WireConnections();
 }
@@ -24,6 +28,26 @@ void Instrument::WireConnections()
 void Instrument::SetShortWaitMs(int value)
 {
     m_instSocket.SetShortWaitMs(value);
+}
+
+void Instrument::setPulseWidth(double width)
+{
+    m_pulseWidth = width;
+}
+
+void Instrument::setPulseDelay(double delay)
+{
+    m_pulseDelay = delay;
+}
+
+void Instrument::setSynth1(bool isEnabled)
+{
+    m_synth1 = isEnabled;
+}
+
+void Instrument::setSynth2(bool isEnabled)
+{
+    m_synth2 = isEnabled;
 }
 
 void Instrument::SetLongWaitMs(int value)

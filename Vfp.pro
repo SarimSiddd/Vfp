@@ -20,7 +20,11 @@ SOURCES += \
     Model/instsocket.cpp \
     Model/provider.cpp \
     Model/settings.cpp \
+    View/aboutbox.cpp \
+    View/controltab.cpp \
     View/setuptab.cpp \
+    ViewMgr/controlviewmanager.cpp \
+    ViewMgr/mainviewmanager.cpp \
     ViewMgr/setupviewmgr.cpp \
     main.cpp \
     View/mainview.cpp \
@@ -32,13 +36,19 @@ HEADERS += \
     Model/instsocket.h \
     Model/provider.h \
     Model/settings.h \
+    View/aboutbox.h \
+    View/controltab.h \
     View/mainview.h \
     View/setuptab.h \
+    ViewMgr/controlviewmanager.h \
+    ViewMgr/mainviewmanager.h \
     ViewMgr/setupviewmgr.h \
     startup.h \
     utils.h
 
 FORMS += \
+    View/aboutbox.ui \
+    View/controltab.ui \
     View/mainview.ui \
     View/setuptab.ui
 
